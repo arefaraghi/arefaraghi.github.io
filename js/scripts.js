@@ -1,3 +1,6 @@
+const header = document.getElementById('site-header')
+const overlay = document.getElementById('overlay')
+
 function createHeaderLinks(links) {
     const ul = document.getElementById('header-links')
     const template = document.getElementById('header-link-template')
@@ -86,19 +89,44 @@ function createProjects(projects) {
         }
 
         const siema = new Siema({
+            draggable: false,
             onInit: printSlideIndex,
             onChange: printSlideIndex,
         })
 
         prev.addEventListener('click', () => siema.prev())
         next.addEventListener('click', () => siema.next())
+
+        function initImagePreview() {
+            const elements = document.querySelectorAll('#projects-container .project')
+            const preview = document.getElementById('project-preview')
+
+            Array.from(elements).forEach((element, index) => {
+                element.querySelector('img').addEventListener('click', (e) => {
+                    overlay.classList.add('active', 'force')
+                    preview.classList.add('active')
+
+                    preview.querySelector('strong').textContent = projects[index].title
+                    preview.querySelector('img').src = projects[index].image
+
+                    element.addEventListener('mousemove', (e) => {
+                        console.log('dragenter')
+                    })
+                })
+            })
+
+            document.getElementById('close-preview').addEventListener('click', (e) => {
+                header.classList.remove('active')
+                overlay.classList.remove('active', 'force')
+                document.getElementById('project-preview').classList.remove('active')
+            })
+        }
+
+        initImagePreview()
     }
 }
 
 function mobileMenu() {
-    const header = document.getElementById('site-header')
-    const overlay = document.getElementById('header-overlay')
-
     document.getElementById('mobile-menu').addEventListener('click', () => {
         if (header.classList.contains('active')) {
             header.classList.remove('active')
@@ -109,10 +137,15 @@ function mobileMenu() {
             overlay.classList.add('active')
         }
     })
+}
 
-    document.getElementById('header-overlay').addEventListener('click', () => {
+function initOverlay() {
+    const projectPreview = document.getElementById('project-preview')
+
+    document.getElementById('overlay').addEventListener('click', () => {
         header.classList.remove('active')
-        overlay.classList.remove('active')
+        overlay.classList.remove('active', 'force')
+        projectPreview.classList.remove('active')
     })
 }
 
@@ -123,7 +156,7 @@ function responsiveTools() {
 
         function resize() {
             setTimeout(() => {
-                const width = document.querySelector('#projects-container .project:first-child .media img').offsetHeight;
+                const width = document.querySelector('#projects-container .project:first-child .media img').offsetHeight
 
                 document.documentElement.style.setProperty('--project-height', width + 'px')
             }, 100)
@@ -139,4 +172,5 @@ window.onload = (event) => {
     createProjects(projects)
     mobileMenu()
     responsiveTools()
+    initOverlay()
 }

@@ -28,6 +28,26 @@ p {
     margin-top: 110px;
 }
 
+#overlay {
+    display: none;
+    transition: all 0.2ms;
+}
+
+#overlay.active {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: block;
+    z-index: 5;
+    background: rgba(255, 255, 255, 0.84);
+}
+
+#overlay.force {
+    z-index: 15;
+}
+
 /******* heading *******************************************************************************************************/
 
 .heading {
@@ -90,11 +110,6 @@ p {
     outline: none;
     border: none;
     background: none;
-}
-
-#header-overlay {
-    display: none;
-    transition: all 0.2ms;
 }
 
 #site-header #header-links {
@@ -193,6 +208,7 @@ p {
     width: 400px;
     border-radius: 8px;
     overflow: hidden;
+    cursor: pointer;
 }
 
 #projects-container .project .body {
@@ -243,6 +259,47 @@ p {
 
 #projects-container #pagination button.disabled {
     opacity: 0.2;
+}
+
+#project-preview {
+    position: fixed;
+    width: 70%;
+    height: 70%;
+    top: 15%;
+    left: 15%;
+    display: none;
+    z-index: 20;
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+#project-preview.active {
+    display: block;
+    opacity: 1;
+}
+
+#project-preview #preview-header {
+    position: absolute;
+    top: -45px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#project-preview #preview-header strong {
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--black-1);
+}
+
+#project-preview #preview-header button {
+    border: none;
+    outline: none;
+    background: none;
+}
+
+#project-preview img {
+    width: 100%;
 }
 
 /******* footer ********************************************************************************************************/
@@ -380,17 +437,6 @@ p {
 
     #site-header #header-links li a {
         font-size: 18px;
-    }
-
-    #header-overlay.active {
-        position: fixed;
-        height: 100%;
-        width: 100%;
-        top: 0;
-        left: 0;
-        display: block;
-        z-index: 5;
-        background: rgba(255, 255, 255, 0.84);
     }
 
     /******* case-studies **************************************************************************************************/
