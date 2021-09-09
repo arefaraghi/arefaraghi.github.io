@@ -284,7 +284,33 @@ p {
     margin-top: 8px;
 }
 
-/******* social ********************************************************************************************************/
+/******* page **********************************************************************************************************/
+
+#page {
+    position: relative;
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--black-1);
+    margin-bottom: 64px;
+}
+
+#page h1 {
+    font-weight: 900;
+    font-size: 32px;
+    margin-bottom: 32px;
+}
+
+#page img {
+    display: block;
+    width: 100%;
+}
+
+#page .heading {
+    margin-top: 32px;
+    margin-bottom: 12px;
+}
+
+/******* responsive ****************************************************************************************************/
 
 @media screen and (max-width: 600px) {
     html, body {

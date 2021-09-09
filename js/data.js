@@ -1,7 +1,7 @@
 const headerLinks = [
     {
         label: 'Work',
-        href: 'https://arefaraghi.github.io',
+        href: './index.html',
         target: '_self',
         class: ['bold']
     },

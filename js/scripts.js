@@ -2,91 +2,98 @@ function createHeaderLinks(links) {
     const ul = document.getElementById('header-links')
     const template = document.getElementById('header-link-template')
 
-    links.forEach((link) => {
-        const li = document.importNode(template.content, true)
-        const a = li.querySelector('a')
+    if (template) {
+        links.forEach((link) => {
+            const li = document.importNode(template.content, true)
+            const a = li.querySelector('a')
 
-        a.textContent = link.label
-        a.href = link.href
+            a.textContent = link.label
+            a.href = link.href
 
-        if (link.target !== '') {
-            a.target = link.target
-        }
+            if (link.target !== '') {
+                a.target = link.target
+            }
 
-        link.class.forEach((c) => {
-            a.classList.add(c)
+            link.class.forEach((c) => {
+                a.classList.add(c)
+            })
+
+            ul.appendChild(li)
         })
 
-        ul.appendChild(li)
-    })
-
-    ul.replaceWith(ul)
+        ul.replaceWith(ul)
+    }
 }
 
 function createCaseStudies(caseStudies) {
     const container = document.getElementById('case-studies-container')
     const template = document.getElementById('case-study-template')
 
-    caseStudies.forEach((caseStudy) => {
-        const item = document.importNode(template.content, true)
+    if (template) {
+        caseStudies.forEach((caseStudy) => {
+            const item = document.importNode(template.content, true)
 
-        item.querySelector('img').src = caseStudy.image
-        item.querySelector('.body strong').textContent = caseStudy.title
-        item.querySelector('.body a').href = caseStudy.href
-        item.querySelector('.body a span').textContent = caseStudy.readMoreLabel
+            item.querySelector('img').src = caseStudy.image
+            item.querySelector('.body strong').textContent = caseStudy.title
+            item.querySelector('.body a').href = caseStudy.href
+            item.querySelector('.body a span').textContent = caseStudy.readMoreLabel
 
-        container.appendChild(item)
-    })
+            container.appendChild(item)
+        })
 
-    container.replaceWith(container)
+        container.replaceWith(container)
+    }
 }
 
 function createProjects(projects) {
     const container = document.querySelector('#projects-container .siema')
     const template = document.getElementById('project-template')
-    const totalSlides = projects.length
-    const prev = document.querySelector('.prev')
-    const next = document.querySelector('.next')
 
-    projects.forEach((project) => {
-        const item = document.importNode(template.content, true)
+    if (template) {
+        const totalSlides = projects.length
+        const prev = document.querySelector('.prev')
+        const next = document.querySelector('.next')
 
-        item.querySelector('img').src = project.image
-        item.querySelector('.body strong').textContent = project.title
-        item.querySelector('.body p').innerHTML = project.description
-        item.querySelector('.body a').href = project.href
-        item.querySelector('.body a').textContent = project.linkLabel
+        projects.forEach((project) => {
+            const item = document.importNode(template.content, true)
 
-        container.appendChild(item)
-    })
+            item.querySelector('img').src = project.image
+            item.querySelector('.body strong').textContent = project.title
+            item.querySelector('.body p').innerHTML = project.description
+            item.querySelector('.body a').href = project.href
+            item.querySelector('.body a').textContent = project.linkLabel
 
-    container.replaceWith(container)
-    document.getElementById('total-pages').textContent = projects.length
+            container.appendChild(item)
+        })
 
-    function printSlideIndex() {
-        const currentSlide = this.currentSlide + 1
+        container.replaceWith(container)
+        document.getElementById('total-pages').textContent = projects.length
 
-        document.querySelector('#pagination .prev').classList.remove('disabled')
-        document.querySelector('#pagination .next').classList.remove('disabled')
+        function printSlideIndex() {
+            const currentSlide = this.currentSlide + 1
 
-        document.getElementById('current-page').textContent = currentSlide
+            document.querySelector('#pagination .prev').classList.remove('disabled')
+            document.querySelector('#pagination .next').classList.remove('disabled')
 
-        if (currentSlide === 1) {
-            document.querySelector('#pagination .prev').classList.add('disabled')
+            document.getElementById('current-page').textContent = currentSlide
+
+            if (currentSlide === 1) {
+                document.querySelector('#pagination .prev').classList.add('disabled')
+            }
+
+            if (currentSlide >= totalSlides) {
+                document.querySelector('#pagination .next').classList.add('disabled')
+            }
         }
 
-        if (currentSlide >= totalSlides) {
-            document.querySelector('#pagination .next').classList.add('disabled')
-        }
+        const siema = new Siema({
+            onInit: printSlideIndex,
+            onChange: printSlideIndex,
+        })
+
+        prev.addEventListener('click', () => siema.prev())
+        next.addEventListener('click', () => siema.next())
     }
-
-    const siema = new Siema({
-        onInit: printSlideIndex,
-        onChange: printSlideIndex,
-    })
-
-    prev.addEventListener('click', () => siema.prev())
-    next.addEventListener('click', () => siema.next())
 }
 
 function mobileMenu() {
@@ -111,18 +118,20 @@ function mobileMenu() {
 }
 
 function responsiveTools() {
-    window.removeEventListener('resize', resize)
-    window.addEventListener('resize', resize)
+    if (document.getElementById('projects-container')) {
+        window.removeEventListener('resize', resize)
+        window.addEventListener('resize', resize)
 
-    function resize() {
-        setTimeout(() => {
-            const width = document.querySelector('#projects-container .project:first-child .media img').offsetHeight;
+        function resize() {
+            setTimeout(() => {
+                const width = document.querySelector('#projects-container .project:first-child .media img').offsetHeight;
 
-            document.documentElement.style.setProperty('--project-height', width + 'px')
-        }, 100)
+                document.documentElement.style.setProperty('--project-height', width + 'px')
+            }, 100)
+        }
+
+        resize()
     }
-
-    resize()
 }
 
 window.onload = (event) => {
