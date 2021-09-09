@@ -13,7 +13,7 @@ const headerLinks = [
     },
     {
         label: 'Resume',
-        href: 'https://www.dropbox.com/s/8gczd4xbmj5a2sf/Aref%20Ahmadi%20Araghi%20-%20Designer.pdf?dl=0',
+        href: './images/aref-araghi-resume.pdf',
         target: '_blank',
         class: []
     },
@@ -28,7 +28,7 @@ const headerLinks = [
 const caseStudies = [
     {
         title: 'Redesigning a VOD’s app experience',
-        href: 'https://example.com',
+        href: 'https://aref-aa.medium.com/?p=6f3a90ea4aa5',
         readMoreLabel: 'Read',
         image: './images/namava.png'
     },
