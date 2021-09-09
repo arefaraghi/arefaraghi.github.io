@@ -45,28 +45,24 @@ const projects = [
         title: 'TrialBlaze dashboard',
         description: 'Creating complex dashboards is always a challenge. Speaking of dashboards I really enjoyed working on TrialBlaze (an Australian startup) project.',
         href: 'https://dribbble.com/shots/16307904-TrialBlaze-dashboard',
-        linkLabel: 'Link',
         image: './images/trial-blaze-dashboard.png'
     },
     {
         title: 'Gift Cards',
         description: 'Here\'s a couple of gift cards I designed for a gift card shop website.',
         href: 'https://dribbble.com/shots/9135756-Gift-Cards',
-        linkLabel: 'Link',
         image: './images/gift-card.png'
     },
     {
         title: 'TrialBlaze Landing',
         description: 'Here\'s a landing page that I have been working on recently. Our team launched the first version of the the product and now we\'re waiting for some good news. ',
         href: 'https://dribbble.com/shots/14348806-TRIALBLAZE-Landing-Page',
-        linkLabel: 'Link',
         image: './images/trial-blaze.png'
     },
     {
         title: 'STARCRAFT Gameplay',
         description: 'A few years ago, I painted a space marine from STARCRAFT. <br>A design concept I came up with recently is inspired by League of Legends\' stunning design.',
         href: 'https://dribbble.com/shots/16392339-STARCRAFT-Gameplay',
-        linkLabel: 'Link',
         image: './images/star-craft.png'
     }
 ]

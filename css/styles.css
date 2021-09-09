@@ -3,7 +3,6 @@
     --black-0: rgba(24, 24, 24, 0.36);
     --black-1: rgba(24, 24, 24, 0.8);
     --black-2: rgba(24, 24, 24, 1);
-    --cyan: #49BEFF;
 }
 
 html, body {
@@ -81,6 +80,11 @@ p {
     margin-bottom: 0;
 }
 
+#site-header h1 a {
+    text-decoration: none;
+    color: inherit;
+}
+
 #site-header #mobile-menu {
     display: none;
     outline: none;
@@ -137,6 +141,7 @@ p {
     overflow: hidden;
     margin-bottom: 32px;
     transition: all 0.3s;
+    text-decoration: none;
 }
 
 #case-studies-container .case-study:hover {
@@ -158,18 +163,18 @@ p {
     color: var(--black-1);
 }
 
-#case-studies-container .case-study .body a {
+#case-studies-container .case-study .body .read-more {
     font-size: 16px;
     color: var(--black-0);
     text-decoration: none;
 }
 
-#case-studies-container .case-study .body a svg {
+#case-studies-container .case-study .body .read-more svg {
     width: 18px;
     margin-left: 8px;
 }
 
-#case-studies-container .case-study .body a svg path {
+#case-studies-container .case-study .body .read-more svg path {
     fill: var(--black-0);
 }
 
@@ -194,7 +199,7 @@ p {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 8px 24px 48px;
+    padding: 8px 24px;
 }
 
 #projects-container .project .body strong {
@@ -211,7 +216,7 @@ p {
 #projects-container .project .body a {
     font-size: 18px;
     text-decoration: none;
-    color: var(--cyan);
+    align-self: flex-end;
 }
 
 #projects-container #pagination {
@@ -281,7 +286,15 @@ p {
 }
 
 #social a {
-    margin-top: 8px;
+    margin-top: 24px;
+}
+
+#social a svg g {
+    transition: all 0.3s;
+}
+
+#social a:hover svg g {
+    opacity: 1;
 }
 
 /******* page **********************************************************************************************************/
@@ -388,6 +401,10 @@ p {
         border: none;
     }
 
+    #case-studies-container .case-study:hover {
+        box-shadow: none;
+    }
+
     #case-studies-container .case-study .media img {
         width: 100%;
         border-radius: 8px;
@@ -422,6 +439,11 @@ p {
         padding: 0;
     }
 
+    #projects-container .project .body a {
+        margin-top: 12px;
+        align-self: flex-start;
+    }
+
     #projects-container #pagination {
         top: calc(var(--project-height) + 30px);
         bottom: auto;
@@ -448,7 +470,7 @@ p {
     }
 
     #social a {
-        margin: 0 8px;
+        margin: 0 24px;
     }
 
     /******* footer ********************************************************************************************************/

@@ -33,10 +33,10 @@ function createCaseStudies(caseStudies) {
         caseStudies.forEach((caseStudy) => {
             const item = document.importNode(template.content, true)
 
+            item.querySelector('.case-study').href = caseStudy.href
             item.querySelector('img').src = caseStudy.image
             item.querySelector('.body strong').textContent = caseStudy.title
-            item.querySelector('.body a').href = caseStudy.href
-            item.querySelector('.body a span').textContent = caseStudy.readMoreLabel
+            item.querySelector('.body .read-more span').textContent = caseStudy.readMoreLabel
 
             container.appendChild(item)
         })
@@ -61,7 +61,6 @@ function createProjects(projects) {
             item.querySelector('.body strong').textContent = project.title
             item.querySelector('.body p').innerHTML = project.description
             item.querySelector('.body a').href = project.href
-            item.querySelector('.body a').textContent = project.linkLabel
 
             container.appendChild(item)
         })
