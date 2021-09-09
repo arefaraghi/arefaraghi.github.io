@@ -263,10 +263,10 @@ p {
 
 #project-preview {
     position: fixed;
-    width: 70%;
-    height: 70%;
-    top: 15%;
-    left: 15%;
+    width: 60%;
+    height: 60%;
+    top: 150px;
+    left: 20%;
     display: none;
     z-index: 20;
     opacity: 0;
@@ -300,6 +300,15 @@ p {
 
 #project-preview img {
     width: 100%;
+}
+
+
+@media screen and (min-width: 1700px) {
+    #project-preview {
+        width: 40%;
+        height: 40%;
+        left: 30%;
+    }
 }
 
 /******* footer ********************************************************************************************************/
@@ -439,7 +448,7 @@ p {
         font-size: 18px;
     }
 
-    /******* case-studies **************************************************************************************************/
+    /* case-studies */
 
     #case-studies-container .case-study {
         flex-direction: column;
@@ -502,6 +511,12 @@ p {
 
     #projects-container #pagination button {
         margin: 0 !important;
+    }
+
+    #project-preview {
+        width: 90%;
+        height: 90%;
+        left: 5%;
     }
 
     /* social */
