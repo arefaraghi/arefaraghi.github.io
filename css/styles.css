@@ -164,6 +164,10 @@ p {
     cursor: pointer;
 }
 
+#case-studies-container .case-study .media img {
+    width: 350px;
+}
+
 #case-studies-container .case-study .body {
     display: inline-flex;
     flex-direction: column;
