@@ -49,14 +49,10 @@ function createCaseStudies(caseStudies) {
 }
 
 function createProjects(projects) {
-    const container = document.querySelector('#projects-container .siema')
+    const container = document.querySelector('#projects-container .slider')
     const template = document.getElementById('project-template')
 
     if (template) {
-        const totalSlides = projects.length
-        const prev = document.querySelector('.prev')
-        const next = document.querySelector('.next')
-
         projects.forEach((project) => {
             const item = document.importNode(template.content, true)
 
@@ -69,33 +65,8 @@ function createProjects(projects) {
         })
 
         container.replaceWith(container)
-        document.getElementById('total-pages').textContent = projects.length
 
-        function printSlideIndex() {
-            const currentSlide = this.currentSlide + 1
-
-            document.querySelector('#pagination .prev').classList.remove('disabled')
-            document.querySelector('#pagination .next').classList.remove('disabled')
-
-            document.getElementById('current-page').textContent = currentSlide
-
-            if (currentSlide === 1) {
-                document.querySelector('#pagination .prev').classList.add('disabled')
-            }
-
-            if (currentSlide >= totalSlides) {
-                document.querySelector('#pagination .next').classList.add('disabled')
-            }
-        }
-
-        const siema = new Siema({
-            draggable: false,
-            onInit: printSlideIndex,
-            onChange: printSlideIndex,
-        })
-
-        prev.addEventListener('click', () => siema.prev())
-        next.addEventListener('click', () => siema.next())
+        new Slideshow('#projects-container')
 
         function initImagePreview() {
             const elements = document.querySelectorAll('#projects-container .project')
@@ -166,11 +137,82 @@ function responsiveTools() {
     }
 }
 
-window.onload = (event) => {
+function Slideshow(element) {
+    this.el = document.querySelector(element)
+    this.init()
+}
+
+Slideshow.prototype = {
+    init: function () {
+        this.wrapper = this.el.querySelector('.slider')
+        this.slides = this.el.querySelectorAll('.slide')
+        this.previous = this.el.querySelector('.prev')
+        this.next = this.el.querySelector('.next')
+        this.currentPage = this.el.querySelector('#current-page')
+        this.totalPages = this.el.querySelector('#total-pages')
+        this.index = 0
+        this.total = this.slides.length
+
+        this.actions()
+    },
+
+    _slideTo: function (slide) {
+        const currentSlide = this.slides[slide]
+        currentSlide.classList.add('active')
+
+        this.currentPage.textContent = slide + 1
+
+        for (let i = 0; i < this.slides.length; i++) {
+            let slide = this.slides[i]
+
+            if (slide !== currentSlide) {
+                slide.classList.remove('active')
+            }
+        }
+    },
+
+    actions: function () {
+        const self = this
+
+        this.slides[0].classList.add('active')
+        this.currentPage.textContent = 1
+        this.totalPages.textContent = this.slides.length
+
+        self.next.addEventListener('click', function () {
+            self.index++
+            self.next.classList.remove('disabled')
+            self.previous.classList.remove('disabled')
+
+            if (self.index === self.total - 1) {
+                self.index = self.total - 1
+                self.next.classList.add('disabled')
+            }
+
+            self._slideTo(self.index)
+
+        }, false)
+
+        self.previous.addEventListener('click', function () {
+            self.index--
+            self.previous.classList.remove('disabled')
+            self.next.classList.remove('disabled')
+
+            if (self.index === 0) {
+                self.index = 0
+                self.previous.classList.add('disabled')
+            }
+
+            self._slideTo(self.index)
+
+        }, false)
+    }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
     createHeaderLinks(headerLinks)
     createCaseStudies(caseStudies)
     createProjects(projects)
     mobileMenu()
     responsiveTools()
     initOverlay()
-}
+}, false)

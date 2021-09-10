@@ -197,6 +197,28 @@ p {
     fill: var(--black-0);
 }
 
+/******* slider ********************************************************************************************************/
+
+.slider {
+    position: relative;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    opacity: 0;
+    float: left;
+    transition: opacity 500ms linear;
+    background: var(--site-background);
+}
+
+.slider > .slide.active {
+    position: relative;
+    opacity: 1;
+    float: none;
+}
+
 /******* projects ******************************************************************************************************/
 
 #projects-container {
@@ -246,7 +268,8 @@ p {
     bottom: 0;
     left: 420px;
     font-size: 20px;
-    color: var(--black-1)
+    color: var(--black-1);
+    user-select: none;
 }
 
 #projects-container #pagination button {
@@ -263,6 +286,7 @@ p {
 
 #projects-container #pagination button.disabled {
     opacity: 0.2;
+    pointer-events: none;
 }
 
 #project-preview {

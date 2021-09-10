@@ -12,7 +12,6 @@
 
     <link rel="preload" href="./js/scripts.js" as="script">
     <link rel="preload" href="./js/data.js" as="script">
-    <link rel="preload" href="./js/siema.min.js" as="script">
     <link rel="preload" href="./css/bootstrap-reboot.min.css" as="style">
     <link rel="preload" href="./css/bootstrap-grid.min.css" as="style">
     <link rel="preload" href="./fonts/avenir/avenir.css" as="style">
@@ -77,7 +76,7 @@
                 <span class="heading-description">Other projects that I enjoyed working on</span>
 
                 <div id="projects-container">
-                    <div class="siema"></div>
+                    <div class="slider"></div>
 
                     <div id="pagination">
                         <button class="prev">
@@ -189,7 +188,7 @@
 </template>
 
 <template id="project-template">
-    <div>
+    <div class="slide">
         <div class="project">
             <div class="media">
                 <img src="" />
@@ -211,7 +210,6 @@
     </div>
 </template>
 
-<script src="./js/siema.min.js" defer></script>
 <script src="./js/data.js" defer></script>
 <script src="./js/scripts.js" defer></script>
 </body>
