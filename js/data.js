@@ -33,7 +33,7 @@ const caseStudies = [
         image: './images/namava.png'
     },
     {
-        title: 'Creating a better experience for Internet Providers’ apps',
+        title: 'Creating a better experience for My Shatel app',
         href: 'https://aref-aa.medium.com/case-study-creating-a-better-experience-for-internet-providers-apps-c5d05041c3af',
         readMoreLabel: 'Read',
         image: './images/shatel.png'
