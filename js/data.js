@@ -28,13 +28,13 @@ const headerLinks = [
 const caseStudies = [
     {
         title: 'Redesigning a VOD’s app experience',
-        href: 'hhttps://aref-aa.medium.com/?p=6f3a90ea4aa5',
+        href: 'https://bootcamp.uxdesign.cc/redesigning-namavas-app-experience-a-ux-case-study-6f3a90ea4aa5',
         readMoreLabel: 'Read',
         image: './images/namava.png'
     },
     {
-        title: 'Redesigning My Shatel app',
-        href: 'https://example.com',
+        title: 'Creating a better experience for Internet Providers’ apps',
+        href: 'https://aref-aa.medium.com/case-study-creating-a-better-experience-for-internet-providers-apps-c5d05041c3af',
         readMoreLabel: 'Read',
         image: './images/shatel.png'
     }
