@@ -144,12 +144,22 @@ p {
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
-    font-size: 28px;
+}
+
+#biography .title {
+    font-size: 26px;
+    color: var(--black-2);
+    max-width: 540px;
+}
+
+#biography .description {
+    font-size: 18px;
+    color: var(--black-1);
 }
 
 #biography img {
     width: 192px;
-    margin-left: 16px;
+    margin-left: 48px;
 }
 
 /******* case-studies **************************************************************************************************/
