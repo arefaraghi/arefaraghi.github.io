@@ -223,12 +223,14 @@ p {
     float: left;
     transition: opacity 500ms linear;
     background: var(--site-background);
+    z-index: 1;
 }
 
 .slider > .slide.active {
     position: relative;
     opacity: 1;
     float: none;
+    z-index: 2;
 }
 
 /******* projects ******************************************************************************************************/
@@ -282,6 +284,7 @@ p {
     font-size: 20px;
     color: var(--black-1);
     user-select: none;
+    z-index: 3;
 }
 
 #projects-container #pagination button {
