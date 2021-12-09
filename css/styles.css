@@ -24,6 +24,10 @@ p {
     color: var(--black-2);
 }
 
+.mt-2 {
+    margin-top: 16px;
+}
+
 .mt-6 {
     margin-top: 110px;
 }
@@ -137,7 +141,15 @@ p {
 /******* biography *****************************************************************************************************/
 
 #biography {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
     font-size: 28px;
+}
+
+#biography img {
+    width: 192px;
+    margin-left: 16px;
 }
 
 /******* case-studies **************************************************************************************************/
