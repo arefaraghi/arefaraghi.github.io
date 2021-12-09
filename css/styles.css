@@ -488,6 +488,16 @@ p {
         font-size: 18px;
     }
 
+    /* biography */
+    #biography {
+        flex-direction: column-reverse;
+    }
+
+    #biography img {
+        margin-left: 0;
+        margin-bottom: 32px;
+    }
+
     /* case-studies */
 
     #case-studies-container .case-study {
